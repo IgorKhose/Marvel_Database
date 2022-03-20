@@ -16,6 +16,12 @@ class RandomChar extends Component {
     // Создаем объект класса сервиса для создания запросов 
     marvelService = new MarvelService();
 
+    onCharLoading = ()=>{
+        this.setState({
+            loading:true
+        })
+    }
+
     componentDidMount(){
         this.updateChar();
     }
@@ -28,6 +34,7 @@ class RandomChar extends Component {
 
     updateChar = ()=>{
         const id = Math.floor(Math.random()*(1011400 - 1011000)+1011000);
+        this.onCharLoading();
         this.marvelService
             .getCharacter(id)
             .then(this.onCharacterLoaded)
@@ -74,7 +81,7 @@ const View = ({char})=>{
     }
         
     if(typeof description!=undefined && typeof description === "string")
-            if(description.length > 300)
+            if(description.length > 262)
                 description = description.substring(0, 200) +"...";
         if(description === "")
             description = "No information available";
