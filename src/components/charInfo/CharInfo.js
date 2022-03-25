@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import PropTypes from 'prop-types';
 import './charInfo.scss';
 
 import Spinner from '../spinner/spinner';
@@ -137,5 +138,10 @@ const View = ({char}) =>{
         </>
     )
 }
-
+// Проверка типов приходящих пропсов
+// 
+CharInfo.propTypes = {
+    // название поступающего пропса и валидация. Ошибку можно увидеть в консоли
+    charId: PropTypes.number
+}
 export default CharInfo;
